@@ -31,7 +31,7 @@ theme:
 nav:
   - ホーム: index.md
   - 使い方: usage.md
-  - 仕組みと知見: internals.md
+  - 仕様と制約: internals.md
 
 markdown_extensions:
   - admonition
