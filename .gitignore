@@ -1,0 +1,26 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# ツールのキャッシュ / ビルド成果物
+.ruff_cache/
+.pytest_cache/
+site/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# OCR の生成物・サンプル・一時ファイル
+out/
+out_pdf*/
+sample.png
+_probe_*.png
+_exp_*.py

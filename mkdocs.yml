@@ -1,0 +1,44 @@
+site_name: deepseek-ocr-v2
+site_description: DeepSeek-OCR-2 をローカル(Windows / 6GB GPU)で動かし、PDFを丸ごとOCRしてクリーンなMarkdownに整えるツール群
+site_url: https://P4suta.github.io/deepseek-ocr-v2/
+repo_url: https://github.com/P4suta/deepseek-ocr-v2
+repo_name: P4suta/deepseek-ocr-v2
+
+theme:
+  name: material
+  language: ja
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: ダークモードへ
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: ライトモードへ
+  features:
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+    - toc.integrate
+
+nav:
+  - ホーム: index.md
+  - 使い方: usage.md
+  - 仕組みと知見: internals.md
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - tables
+  - toc:
+      permalink: true

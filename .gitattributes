@@ -1,0 +1,5 @@
+# リポジトリ内はLFに正規化（Windows/macOS/Linux間の改行差を吸収）
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.pdf binary

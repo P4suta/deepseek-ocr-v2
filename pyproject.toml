@@ -1,0 +1,62 @@
+[project]
+name = "deepseek-ocr-v2"
+version = "0.1.0"
+description = "Run DeepSeek-OCR-2 locally (RTX 3060 6GB / Windows) and turn PDFs into clean Markdown"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+license = { text = "MIT" }
+authors = [{ name = "Yasunobu" }]
+dependencies = [
+    "torch==2.6.0",
+    "torchvision==0.21.0",
+    "transformers==4.46.3",
+    "tokenizers==0.20.3",
+    "accelerate>=1.0.0",
+    "bitsandbytes>=0.45.0",
+    "einops",
+    "addict",
+    "easydict",
+    "pillow",
+    "numpy",
+    "pymupdf>=1.27.2.3",
+]
+
+[project.urls]
+Homepage = "https://P4suta.github.io/deepseek-ocr-v2/"
+Repository = "https://github.com/P4suta/deepseek-ocr-v2"
+
+# torch / torchvision は PyPI の CPU 版ではなく PyTorch の CUDA (cu124) index から取得する。
+# explicit=true により、この index は下の sources で明示参照したパッケージにのみ使われる
+# （他の依存は通常どおり PyPI から解決される）。
+[tool.uv.sources]
+torch = [{ index = "pytorch-cu124" }]
+torchvision = [{ index = "pytorch-cu124" }]
+
+[[tool.uv.index]]
+name = "pytorch-cu124"
+url = "https://download.pytorch.org/whl/cu124"
+explicit = true
+
+[dependency-groups]
+dev = [
+    "ruff>=0.11.0",
+    "ty>=0.0.44",
+    "pytest>=8.0.0",
+    "mkdocs-material>=9.5.0",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]  # ルートの cleanup.py 等を import 可能に
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+# E/W: pycodestyle, F: pyflakes, I: isort, UP: pyupgrade,
+# B: flake8-bugbear, SIM: flake8-simplify, C4: comprehensions
+select = ["E", "W", "F", "I", "UP", "B", "SIM", "C4"]
+
+[tool.ruff.format]
+quote-style = "double"

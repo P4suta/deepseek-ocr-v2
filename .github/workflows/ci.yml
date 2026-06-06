@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+      - name: Ruff lint
+        run: uvx ruff@0.15.16 check .
+      - name: Ruff format check
+        run: uvx ruff@0.15.16 format --check .
+      - name: Unit tests (cleanup is stdlib-only, no torch needed)
+        run: uvx --with pytest pytest -q tests/
